@@ -31,11 +31,12 @@ function creaZonaPunteggio(containerIniziale) {
 function creaTimer() {
     const timerContainer = document.querySelector("[data-future-container]");
 }
-function clickInizia(bottone, containerIniziale) {
+function clickInizia(bottone, containerIniziale, callback) {
     if (bottone) {
         bottone.addEventListener("click", () => {
             nascondiBottone(bottone);
             creaZonaPunteggio(containerIniziale);
+            callback(); // Eseguiamo la funzione di callback quando il processo è finito
         });
     }
 }

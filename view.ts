@@ -46,11 +46,12 @@ function creaTimer() {
 }
 
 
-function clickInizia(bottone: Bottone, containerIniziale: ADiv): void {
+function clickInizia(bottone: Bottone, containerIniziale: ADiv, callback: () => void): void {
   if (bottone) {
     bottone.addEventListener("click", () => {
       nascondiBottone(bottone);
-      creaZonaPunteggio(containerIniziale)
+      creaZonaPunteggio(containerIniziale);
+      callback(); // Eseguiamo la funzione di callback quando il processo è finito
     });
   }
 }

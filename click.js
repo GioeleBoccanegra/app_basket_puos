@@ -1,4 +1,4 @@
-"use strict";
+//click.ts
 class Squadra {
     constructor(nome, punteggio, id) {
         this.nome = nome;
@@ -8,8 +8,6 @@ class Squadra {
 }
 const squadra1 = new Squadra("Squadra 1", 0, "punteggio-squadra1");
 const squadra2 = new Squadra("Squadra 2", 0, "punteggio-squadra2");
-const containerSquadra1 = document.querySelector("container-squadra1");
-const containerSquadra2 = document.querySelector("container-squadra2");
 function controllaClickDiv(squadra1, squadra2, containerSquadra1, containerSquadra2) {
     if (containerSquadra1) {
         containerSquadra1.addEventListener("click", () => {
@@ -33,4 +31,4 @@ function aggiornaPunteggio(squadra) {
         console.log("non trovato paragro fareggio della squadra: " + squadra.nome);
     }
 }
-controllaClickDiv(squadra1, squadra2, containerSquadra1, containerSquadra2);
+export { Squadra, squadra1, squadra2, controllaClickDiv };

@@ -1,4 +1,4 @@
-
+//click.ts
 class Squadra {
   constructor(public nome: string, public punteggio: number, public id: string) {
   }
@@ -6,11 +6,8 @@ class Squadra {
 
 const squadra1: Squadra = new Squadra("Squadra 1", 0, "punteggio-squadra1");
 const squadra2: Squadra = new Squadra("Squadra 2", 0, "punteggio-squadra2")
-const containerSquadra1 = document.querySelector("container-squadra1") as HTMLDivElement
-const containerSquadra2 = document.querySelector("container-squadra2") as HTMLDivElement
 
-
-function controllaClickDiv(squadra1: Squadra, squadra2: Squadra, containerSquadra1: HTMLDivElement, containerSquadra2: HTMLDivElement): void {
+function controllaClickDiv(squadra1: Squadra, squadra2: Squadra, containerSquadra1: HTMLDivElement | null, containerSquadra2: HTMLDivElement | null): void {
   if (containerSquadra1) {
     containerSquadra1.addEventListener("click", () => {
       aggiornaPunteggio(squadra1)
@@ -38,4 +35,5 @@ function aggiornaPunteggio(squadra: Squadra) {
 
 }
 
-controllaClickDiv(squadra1, squadra2, containerSquadra1, containerSquadra2)
+
+export { Squadra, squadra1, squadra2, controllaClickDiv };
