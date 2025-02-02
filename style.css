@@ -1,85 +1,110 @@
-/* Applichiamo box-sizing universale per un layout più consistente */
+/* Reset di base */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-/* Centralizzazione generale */
-html,
-body {
   margin: 0;
   padding: 0;
+}
+
+html,
+body {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: Arial, sans-serif;
-  /* Aggiungi una font sans-serif per una lettura più pulita */
   background-color: #f5f5f5;
-  /* Colore di sfondo leggero per un buon contrasto */
+  text-align: center;
+  user-select: none;
+  /* Evita selezioni accidentali su dispositivi touch */
 }
 
-/* Contenitori principali comuni */
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Contenitore principale */
 .start-container,
 .future-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  /* Imposta una larghezza massima per evitare che diventi troppo largo su schermi grandi */
+  width: 90%;
+  max-width: 600px;
   padding: 20px;
-  margin: 20px;
 }
 
-/* Contenitori delle squadre */
+/* Bottone iniziale */
+.start-container button {
+  font-size: 24px;
+  padding: 15px 30px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.start-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Contenitore squadre */
 .container-squadra1,
 .container-squadra2 {
   background-color: #4CAF50;
-  /* Colore verde con migliore contrasto */
   color: white;
-  /* Testo bianco per contrastare meglio sul verde */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  border-radius: 8px;
-  /* Aggiungi angoli arrotondati per un aspetto più morbido */
-  margin: 10px;
+  border-radius: 16px;
+  margin: 10px 0;
   width: 100%;
-  max-width: 500px;
-  /* Limita la larghezza per mantenere il contenuto leggibile */
+  max-width: 400px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
 }
 
-/* Testo e punteggio */
+.container-squadra1:active,
+.container-squadra2:active {
+  transform: scale(1.05);
+}
+
+/* Punteggio */
 .punteggio {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 120px;
   margin-top: 10px;
   text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-/* Adatta il comportamento per dispositivi mobili */
+/* Responsive */
 @media (max-width: 768px) {
-
-  html,
-  body {
-    padding: 10px;
+  h1 {
+    font-size: 24px;
   }
 
-  .start-container,
-  .future-container {
-    padding: 10px;
-    margin: 0;
+  .punteggio {
+    font-size: 100px;
   }
 
   .container-squadra1,
   .container-squadra2 {
-    width: 100%;
-    margin-bottom: 15px;
+    padding: 15px;
+  }
+
+  .start-container button {
+    font-size: 20px;
+    padding: 12px 25px;
   }
 }
