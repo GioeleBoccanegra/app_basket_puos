@@ -1,3 +1,4 @@
+//timer.ts
 let pulsanteCreaTimer = document.createElement("button");
 function nascondiBottone(bottone) {
     bottone.style.display = "none";
@@ -26,12 +27,14 @@ function creaTimer(durataCambi, timerContainer) {
 }
 function aggiornaTimer(durataCambi, timer) {
     let tempoRestante = durataCambi; // Converto in secondi
+    let suonofine = new Audio("dong.mp3");
     let timerInterval = setInterval(() => {
         if (tempoRestante > 0) {
             timer.textContent = `Tempo restante: ${tempoRestante} secondi`;
             tempoRestante--; // Decrementa il tempo ogni secondo
         }
         else {
+            suonofine.play();
             timer.textContent = "fare i cambi";
             RiavviaTimer(timer, durataCambi);
             clearInterval(timerInterval); // Ferma il timer

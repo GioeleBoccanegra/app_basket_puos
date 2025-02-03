@@ -18,9 +18,9 @@ body {
   background-color: #f5f5f5;
   text-align: center;
   user-select: none;
-  /* Evita selezioni accidentali su dispositivi touch */
 }
 
+/* Stile Titolo */
 h1 {
   font-size: 28px;
   margin-bottom: 20px;
@@ -34,7 +34,7 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 90%;
+  width: 300px;
   max-width: 600px;
   padding: 20px;
 }
@@ -67,11 +67,15 @@ h1 {
   padding: 20px;
   border-radius: 16px;
   margin: 10px 0;
-  width: 100%;
-  max-width: 400px;
+  width: 300px;
+  /* Assicura che il contenitore occupi tutta la larghezza disponibile */
+  max-width: 600px;
+  /* Aumentato il max-width per allargare i contenitori */
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
+  box-sizing: border-box;
 }
+
 
 .container-squadra1:active,
 .container-squadra2:active {
@@ -84,8 +88,44 @@ h1 {
   font-size: 120px;
   margin-top: 10px;
   text-align: center;
-  margin-left: 10px;
-  margin-right: 10px;
+  padding: 0 10px;
+}
+
+/* Pulsante timer */
+.pulsante-avvia-timer,
+.pulsante-riavvia-timer {
+  font-size: 20px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.pulsante-avvia-timer:hover,
+.pulsante-riavvia-timer:hover {
+  background-color: #218838;
+}
+
+.pulsante-riavvia-timer {
+  background-color: #ffc107;
+}
+
+.pulsante-riavvia-timer:hover {
+  background-color: #e0a800;
+}
+
+/* Contenitore per il timer */
+[data-timer-container] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
 }
 
 /* Responsive */

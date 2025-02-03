@@ -1,3 +1,5 @@
+//timer.ts
+
 let pulsanteCreaTimer: HTMLButtonElement = document.createElement("button")
 
 
@@ -37,11 +39,13 @@ function creaTimer(durataCambi: number, timerContainer: HTMLDivElement,) {
 
 function aggiornaTimer(durataCambi: number, timer: HTMLParagraphElement) {
   let tempoRestante = durataCambi; // Converto in secondi
+  let suonofine = new Audio("dong.mp3")
   let timerInterval = setInterval(() => {
     if (tempoRestante > 0) {
       timer.textContent = `Tempo restante: ${tempoRestante} secondi`;
       tempoRestante--; // Decrementa il tempo ogni secondo
     } else {
+      suonofine.play()
       timer.textContent = "fare i cambi";
       RiavviaTimer(timer, durataCambi)
       clearInterval(timerInterval); // Ferma il timer
