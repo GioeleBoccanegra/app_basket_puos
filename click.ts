@@ -7,6 +7,8 @@ class Squadra {
 const squadra1: Squadra = new Squadra("Squadra 1", 0, "punteggio-squadra1");
 const squadra2: Squadra = new Squadra("Squadra 2", 0, "punteggio-squadra2")
 
+
+
 function controllaClickDiv(squadra1: Squadra, squadra2: Squadra, containerSquadra1: HTMLDivElement | null, containerSquadra2: HTMLDivElement | null): void {
   if (containerSquadra1) {
     containerSquadra1.addEventListener("click", () => {
