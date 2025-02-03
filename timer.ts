@@ -15,18 +15,41 @@ function creaPulsanteTimer(timerContainer: HTMLDivElement | null) {
     pulsanteCreaTimer.classList.add("pulsante-avvia-timer")
     timerContainer.appendChild(pulsanteCreaTimer)
     pulsanteCreaTimer.textContent = "Usa timer"
-    impostaDurata(pulsanteCreaTimer, timerContainer)
+
+    let labelInputMinuti: HTMLLabelElement = document.createElement("label");
+    labelInputMinuti.textContent = "Minuti timer:";
+    labelInputMinuti.setAttribute("for", "inputMinuti"); // Collega il label all'input
+
+    let inputMinuti: HTMLInputElement = document.createElement("input");
+    inputMinuti.setAttribute("id", "inputMinuti"); // ID usato nel label
+    inputMinuti.setAttribute("type", "number"); // Rende l'input numerico
+
+    // Aggiungiamo gli elementi al container
+    timerContainer.appendChild(labelInputMinuti);
+    timerContainer.appendChild(inputMinuti);
+
+    impostaDurata(pulsanteCreaTimer, timerContainer, inputMinuti, labelInputMinuti)
   }
 }
 
+function nascondiImpTimer(inputMinuti: HTMLInputElement, labelInputMinuti: HTMLLabelElement) {
+  inputMinuti.style.display = "none";
+  labelInputMinuti.style.display = "none";
+}
 
-function impostaDurata(pulsanteCreaTimer: HTMLButtonElement, timerContainer: HTMLDivElement) {
+
+function impostaDurata(pulsanteCreaTimer: HTMLButtonElement, timerContainer: HTMLDivElement, inputMinuti: HTMLInputElement, labelInputMinuti: HTMLLabelElement) {
   pulsanteCreaTimer.addEventListener("click", () => {
-    let durataCambi: number | null = Number(prompt("inserisci timer cambio in minuti"))
-    durataCambi *= 60
-    nascondiBottone(pulsanteCreaTimer)
-    console.log(durataCambi)
-    creaTimer(durataCambi, timerContainer)
+    let durataCambi: number | null = Number(inputMinuti.value)
+    if (durataCambi !== null && durataCambi > 0) {
+      nascondiBottone(pulsanteCreaTimer)
+      nascondiImpTimer(inputMinuti, labelInputMinuti)
+      durataCambi *= 60
+      console.log(durataCambi)
+      creaTimer(durataCambi, timerContainer)
+    } else {
+      alert("inserisci un numero maggiore di 0")
+    }
   })
 }
 
