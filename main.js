@@ -7,6 +7,7 @@ const containerIniziale = document.querySelector("[data-future-container]");
 function start() {
     clickInizia(inizia, containerIniziale, () => {
         const timerContainer = document.querySelector("[data-timer-container]");
+        timerContainer.style.display = "block";
         creaPulsanteTimer(timerContainer);
         const containerSquadra1 = document.querySelector(".container-squadra1");
         const containerSquadra2 = document.querySelector(".container-squadra2");

@@ -8,6 +8,7 @@ function creaPulsanteTimer(timerContainer) {
         pulsanteCreaTimer.classList.add("pulsante-avvia-timer");
         timerContainer.appendChild(pulsanteCreaTimer);
         pulsanteCreaTimer.textContent = "Usa timer";
+        let settingsTimerContaier = document.createElement("div");
         let labelInputMinuti = document.createElement("label");
         labelInputMinuti.textContent = "Minuti timer:";
         labelInputMinuti.setAttribute("for", "inputMinuti"); // Collega il label all'input
@@ -15,21 +16,21 @@ function creaPulsanteTimer(timerContainer) {
         inputMinuti.setAttribute("id", "inputMinuti"); // ID usato nel label
         inputMinuti.setAttribute("type", "number"); // Rende l'input numerico
         // Aggiungiamo gli elementi al container
-        timerContainer.appendChild(labelInputMinuti);
-        timerContainer.appendChild(inputMinuti);
-        impostaDurata(pulsanteCreaTimer, timerContainer, inputMinuti, labelInputMinuti);
+        timerContainer.appendChild(settingsTimerContaier);
+        settingsTimerContaier.appendChild(labelInputMinuti);
+        settingsTimerContaier.appendChild(inputMinuti);
+        impostaDurata(pulsanteCreaTimer, timerContainer, settingsTimerContaier, inputMinuti);
     }
 }
-function nascondiImpTimer(inputMinuti, labelInputMinuti) {
-    inputMinuti.style.display = "none";
-    labelInputMinuti.style.display = "none";
+function nascondiImpTimer(settingsTimerContaier) {
+    settingsTimerContaier.remove();
 }
-function impostaDurata(pulsanteCreaTimer, timerContainer, inputMinuti, labelInputMinuti) {
+function impostaDurata(pulsanteCreaTimer, timerContainer, settingsTimerContaier, inputMinuti) {
     pulsanteCreaTimer.addEventListener("click", () => {
         let durataCambi = Number(inputMinuti.value);
-        if (durataCambi !== null && durataCambi > 0) {
+        if (!isNaN(durataCambi) && durataCambi > 0) {
             nascondiBottone(pulsanteCreaTimer);
-            nascondiImpTimer(inputMinuti, labelInputMinuti);
+            nascondiImpTimer(settingsTimerContaier);
             durataCambi *= 60;
             console.log(durataCambi);
             creaTimer(durataCambi, timerContainer);
@@ -46,14 +47,14 @@ function creaTimer(durataCambi, timerContainer) {
 }
 function aggiornaTimer(durataCambi, timer) {
     let tempoRestante = durataCambi; // Converto in secondi
-    let suonofine = new Audio("dong.mp3");
+    let suonoFine = new Audio("dong.mp3");
     let timerInterval = setInterval(() => {
         if (tempoRestante > 0) {
             timer.textContent = `Tempo restante: ${tempoRestante} secondi`;
             tempoRestante--; // Decrementa il tempo ogni secondo
         }
         else {
-            suonofine.play();
+            suonoFine.play().catch(error => console.error("Errore durante la riproduzione dell'audio:", error));
             timer.textContent = "fare i cambi";
             RiavviaTimer(timer, durataCambi);
             clearInterval(timerInterval); // Ferma il timer
@@ -65,14 +66,12 @@ function RiavviaTimer(timer, durataCambi) {
     pulsanteRiavviaTimer.classList.add("pulsante-riavvia-timer");
     pulsanteRiavviaTimer.style.display = "block";
     pulsanteRiavviaTimer.textContent = "riavvia timer";
-    timer.appendChild(pulsanteRiavviaTimer);
+    let wrapper = document.createElement("div");
+    wrapper.appendChild(pulsanteRiavviaTimer);
+    timer.after(wrapper);
     pulsanteRiavviaTimer.addEventListener("click", () => {
-        // Rimuoviamo il vecchio timer e pulsante
-        timer.textContent = "";
-        pulsanteRiavviaTimer.style.display = "none";
-        // Riavviamo il timer con la stessa durata
-        let tempoRestante = durataCambi; // Esegui il timer di nuovo con la stessa durata (o chiedi l'input nuovamente)
-        aggiornaTimer(tempoRestante, timer);
+        wrapper.remove();
+        aggiornaTimer(durataCambi, timer);
     });
 }
 export { creaPulsanteTimer };
