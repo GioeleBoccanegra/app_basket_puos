@@ -7,20 +7,25 @@ const containerIniziale = document.querySelector("[data-future-container]");
 function bottoneCambiaNomeSquadre(squadra1, squadra2) {
     const containerBottoneCambiaNomeSquadre = document.querySelector("[data-cambia-nome-squadra]");
     if (containerBottoneCambiaNomeSquadre) {
+        containerBottoneCambiaNomeSquadre.style.display = "block";
         let bottoneCambiaNome = document.createElement("button");
         bottoneCambiaNome.textContent = "Cambia Nome Squadre";
         containerBottoneCambiaNomeSquadre.appendChild(bottoneCambiaNome);
         let inputNomeSquadreContainer = document.createElement("div");
         let labelNomeSquadra1 = document.createElement("label");
-        labelNomeSquadra1.textContent = "Squadra1";
+        labelNomeSquadra1.textContent = "Nome squadra1";
         labelNomeSquadra1.setAttribute("for", "input-squadra1"); // Collega il label all'input
         let inputSquadra1 = document.createElement("input");
+        labelNomeSquadra1.classList.add("label-s");
         inputSquadra1.setAttribute("id", "input-squadra1"); // ID usato nel label
+        inputSquadra1.classList.add("input-s");
         let labelNomeSquadra2 = document.createElement("label");
-        labelNomeSquadra2.textContent = "Squadra2";
+        labelNomeSquadra2.textContent = "Nome squadra2";
         labelNomeSquadra2.setAttribute("for", "input-squadra2"); // Collega il label all'input
+        labelNomeSquadra2.classList.add("label-s");
         let inputSquadra2 = document.createElement("input");
         inputSquadra2.setAttribute("id", "input-squadra2"); // ID usato nel label
+        inputSquadra2.classList.add("input-s");
         containerBottoneCambiaNomeSquadre.appendChild(inputNomeSquadreContainer);
         inputNomeSquadreContainer.appendChild(labelNomeSquadra1);
         inputNomeSquadreContainer.appendChild(inputSquadra1);
@@ -39,6 +44,8 @@ function bottoneCambiaNomeSquadre(squadra1, squadra2) {
                     nomeSquadra2.textContent = squadra2.nome;
                 }
             }
+            else
+                (alert("Devi inserire almeno una lettera in entrambi i nomi squadra"));
         });
     }
 }
