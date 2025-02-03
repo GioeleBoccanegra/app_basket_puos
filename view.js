@@ -39,7 +39,11 @@ function clickInizia(bottone, containerIniziale, callback) {
     if (bottone) {
         bottone.addEventListener("click", () => {
             nascondiBottone(bottone);
+            const dropdownDiv = document.querySelector("[data-dropdown]");
             creaZonaPunteggio(containerIniziale);
+            if (dropdownDiv) {
+                dropdownDiv.style.display = "block";
+            }
             callback(); // Eseguiamo la funzione di callback quando il processo è finito
         });
     }

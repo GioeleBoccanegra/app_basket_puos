@@ -14,16 +14,22 @@
 
   </div>
 
-  <div data-timer-container style="display: none;">
+  <div class="dropdown" data-dropdown style="display: none;">
+    <!-- Bottone per aprire/chiudere il dropdown -->
+    <button class="dropdown-button">Mostra impostazioni</button>
+    <div class="dropdown-content" id="dropdownContent">
+      <div data-timer-container style="display: none;">
 
+      </div>
+      <div data-cambia-nome-squadra class="cambia-nome-container" style="display:none;"></div>
+    </div>
   </div>
-
-  <div data-cambia-nome-squadra class="cambia-nome-container" style="display:none;"></div>
   <div class="start-container" data-start-button>
     <button>Inizia</button>
   </div>
   <script src="./main.js" type="module"></script>
   <script src="./click.js" type="module"></script>
+  <script src="./dropdawn.js" type="module"></script>
 </body>
 
 </html>
