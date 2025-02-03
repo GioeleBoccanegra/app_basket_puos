@@ -1,4 +1,4 @@
-
+//view.ts
 
 type Bottone = HTMLButtonElement | null;
 type ADiv = HTMLDivElement | null;
@@ -32,17 +32,18 @@ function creaZonaPunteggio(containerIniziale: ADiv): void {
     containerSquadra2.classList.add("container-squadra2")
     containerIniziale.appendChild(containerSquadra1)
     containerIniziale.appendChild(containerSquadra2)
-    containerSquadra1.innerHTML = `<p>squadra1</p>`;
-    containerSquadra2.innerHTML = `<p>squadra2</p>`;
+    let nomeSquadra1: HTMLParagraphElement = document.createElement("p")
+    let nomeSquadra2: HTMLParagraphElement = document.createElement("p")
+    nomeSquadra1.classList.add("nome-squadra-1")
+    nomeSquadra2.classList.add("nome-squadra-2")
+    nomeSquadra1.textContent = "Squadra 1"
+    nomeSquadra2.textContent = "Squadra 2"
+    containerSquadra1.appendChild(nomeSquadra1)
+    containerSquadra2.appendChild(nomeSquadra2)
     punteggioIniziale(containerSquadra1, containerSquadra2)
 
   }
 
-}
-
-
-function creaTimer() {
-  const timerContainer: Bottone = document.querySelector("[data-future-container]");
 }
 
 

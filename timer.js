@@ -7,10 +7,10 @@ function creaPulsanteTimer(timerContainer) {
     if (timerContainer) {
         pulsanteCreaTimer.classList.add("pulsante-avvia-timer");
         timerContainer.appendChild(pulsanteCreaTimer);
-        pulsanteCreaTimer.textContent = "Usa timer";
+        pulsanteCreaTimer.textContent = "Usa timer cambi";
         let settingsTimerContaier = document.createElement("div");
         let labelInputMinuti = document.createElement("label");
-        labelInputMinuti.textContent = "Minuti timer:";
+        labelInputMinuti.textContent = "Minuti";
         labelInputMinuti.setAttribute("for", "inputMinuti"); // Collega il label all'input
         let inputMinuti = document.createElement("input");
         inputMinuti.setAttribute("id", "inputMinuti"); // ID usato nel label
@@ -47,7 +47,7 @@ function creaTimer(durataCambi, timerContainer) {
 }
 function aggiornaTimer(durataCambi, timer) {
     let tempoRestante = durataCambi; // Converto in secondi
-    let suonoFine = new Audio("dong.mp3");
+    let suonoFine = new Audio("urlo.mp3");
     let timerInterval = setInterval(() => {
         if (tempoRestante > 0) {
             timer.textContent = `Tempo restante: ${tempoRestante} secondi`;
