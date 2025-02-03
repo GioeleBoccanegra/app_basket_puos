@@ -241,6 +241,64 @@ input[type="number"]:focus {
   font-weight: bold;
 }
 
+
+/* Contenitore per il bottone di cambio nome squadre */
+[data-cambia-nome-squadra] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 16px;
+  flex-direction: column;
+}
+
+/* Stile per il bottone */
+button {
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Aggiunta di un margine inferiore per distanziare il bottone da altri elementi */
+[data-cambia-nome-squadra] button {
+  margin-bottom: 20px;
+}
+
+/* Stile per i nomi delle squadre */
+.nome-squadra-1,
+.nome-squadra-2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
+}
+
+/* Responsive: assicurarsi che il bottone e il testo siano visibili su schermi più piccoli */
+@media (max-width: 768px) {
+  button {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .nome-squadra-1,
+  .nome-squadra-2 {
+    font-size: 20px;
+  }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
 
