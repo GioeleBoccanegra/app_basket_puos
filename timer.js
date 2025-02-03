@@ -9,6 +9,7 @@ function creaPulsanteTimer(timerContainer) {
         timerContainer.appendChild(pulsanteCreaTimer);
         pulsanteCreaTimer.textContent = "Usa timer cambi";
         let settingsTimerContaier = document.createElement("div");
+        settingsTimerContaier.classList.add("settings-timer-container");
         let labelInputMinuti = document.createElement("label");
         labelInputMinuti.textContent = "Minuti";
         labelInputMinuti.setAttribute("for", "inputMinuti"); // Collega il label all'input

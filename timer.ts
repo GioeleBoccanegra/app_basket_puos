@@ -2,7 +2,6 @@
 
 let pulsanteCreaTimer: HTMLButtonElement = document.createElement("button")
 
-
 function nascondiBottone(bottone: HTMLButtonElement): void {
   bottone.style.display = "none";
 }
@@ -16,6 +15,7 @@ function creaPulsanteTimer(timerContainer: HTMLDivElement | null) {
     timerContainer.appendChild(pulsanteCreaTimer)
     pulsanteCreaTimer.textContent = "Usa timer cambi"
     let settingsTimerContaier: HTMLDivElement = document.createElement("div");
+    settingsTimerContaier.classList.add("settings-timer-container");
     let labelInputMinuti: HTMLLabelElement = document.createElement("label");
     labelInputMinuti.textContent = "Minuti";
     labelInputMinuti.setAttribute("for", "inputMinuti"); // Collega il label all'input
