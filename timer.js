@@ -8,6 +8,7 @@ function creaPulsanteTimer(timerContainer) {
         pulsanteCreaTimer.classList.add("pulsante-avvia-timer");
         timerContainer.appendChild(pulsanteCreaTimer);
         pulsanteCreaTimer.textContent = "Usa timer";
+        let settingsTimerContaier = document.createElement("div");
         let labelInputMinuti = document.createElement("label");
         labelInputMinuti.textContent = "Minuti timer:";
         labelInputMinuti.setAttribute("for", "inputMinuti"); // Collega il label all'input
@@ -15,21 +16,21 @@ function creaPulsanteTimer(timerContainer) {
         inputMinuti.setAttribute("id", "inputMinuti"); // ID usato nel label
         inputMinuti.setAttribute("type", "number"); // Rende l'input numerico
         // Aggiungiamo gli elementi al container
-        timerContainer.appendChild(labelInputMinuti);
-        timerContainer.appendChild(inputMinuti);
-        impostaDurata(pulsanteCreaTimer, timerContainer, inputMinuti, labelInputMinuti);
+        timerContainer.appendChild(settingsTimerContaier);
+        settingsTimerContaier.appendChild(labelInputMinuti);
+        settingsTimerContaier.appendChild(inputMinuti);
+        impostaDurata(pulsanteCreaTimer, timerContainer, settingsTimerContaier, inputMinuti);
     }
 }
-function nascondiImpTimer(inputMinuti, labelInputMinuti) {
-    inputMinuti.style.display = "none";
-    labelInputMinuti.style.display = "none";
+function nascondiImpTimer(settingsTimerContaier) {
+    settingsTimerContaier.remove();
 }
-function impostaDurata(pulsanteCreaTimer, timerContainer, inputMinuti, labelInputMinuti) {
+function impostaDurata(pulsanteCreaTimer, timerContainer, settingsTimerContaier, inputMinuti) {
     pulsanteCreaTimer.addEventListener("click", () => {
         let durataCambi = Number(inputMinuti.value);
         if (!isNaN(durataCambi) && durataCambi > 0) {
             nascondiBottone(pulsanteCreaTimer);
-            nascondiImpTimer(inputMinuti, labelInputMinuti);
+            nascondiImpTimer(settingsTimerContaier);
             durataCambi *= 60;
             console.log(durataCambi);
             creaTimer(durataCambi, timerContainer);

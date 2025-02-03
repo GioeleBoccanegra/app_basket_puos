@@ -128,6 +128,33 @@ h1 {
   color: #333;
 }
 
+/* Stile per il label e l'input del timer */
+label {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+input[type="number"] {
+  width: 100%;
+  max-width: 80px;
+  padding: 5px;
+  font-size: 18px;
+  text-align: center;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input[type="number"]:focus {
+  border-color: #007bff;
+}
+
+
+
 /* Responsive */
 @media (max-width: 768px) {
   h1 {
@@ -146,5 +173,84 @@ h1 {
   .start-container button {
     font-size: 20px;
     padding: 12px 25px;
+  }
+}
+
+/* Contenitore per il timer */
+[data-timer-container] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 350px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Stile per il timer (paragrafo) */
+[data-timer-container] p {
+  font-size: 36px;
+  color: #007bff;
+  /* Colore blu per il timer */
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+/* Pulsante di riavvio */
+.pulsante-riavvia-timer {
+  background-color: #ffc107;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+  /* Pulsante a larghezza piena */
+  margin-top: 15px;
+}
+
+.pulsante-riavvia-timer:hover {
+  background-color: #e0a800;
+  transform: scale(1.05);
+}
+
+.pulsante-riavvia-timer:active {
+  transform: scale(1);
+}
+
+/* Miglioramenti alla transizione quando il timer è in countdown */
+[data-timer-container] p {
+  transition: color 1s ease-out;
+}
+
+/* Modifica al timer quando finisce (sembra un avviso o un cambiamento in corso) */
+[data-timer-container] p:last-of-type {
+  color: #e74c3c;
+  /* Rosso per indicare il cambio di stato */
+  font-size: 40px;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+  /* Ridurre la dimensione del timer sui dispositivi più piccoli */
+  [data-timer-container] p {
+    font-size: 28px;
+  }
+
+  .pulsante-riavvia-timer {
+    font-size: 16px;
+    padding: 10px 20px;
   }
 }
